@@ -10,8 +10,9 @@
     ]
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "lint": "eslint src/**/*.js src/**/*.jsx"
+    "start": "webpack-dev-server",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "Agaev Daniil",

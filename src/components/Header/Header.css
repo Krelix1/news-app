@@ -1,0 +1,13 @@
+.header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-bottom: 2px solid #222222;
+}
+.title{
+  font-family: "Times New Roman",sans-serif;
+  font-size: 60px;
+  margin-bottom: 5px;
+}

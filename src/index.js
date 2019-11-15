@@ -1,5 +1,7 @@
+import './assets/css/reset.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./components/App/App";
+import App from './App';
 
-ReactDOM.render(<App/>, document.getElementById('src'));
+
+ReactDOM.render(<App/>, document.getElementById('app'));

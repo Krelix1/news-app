@@ -1,0 +1,7 @@
+.list{
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  height: 100% !important;
+  padding-right: 4px;
+}

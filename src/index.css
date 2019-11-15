@@ -15,14 +15,14 @@ body {
 .main {
   width: 100%;
   display: flex;
-  margin: 10px auto 5px;
-  height: 85%;
+  margin: 0 auto 5px;
+  height: calc(100% - 210px);
   align-items: center;
   justify-content: center;
   color: #333;
 }
 .footer{
-  height: 100px;
+  height: 80px;
   background-color: #222;
   color: white;
   font-size: 20px;

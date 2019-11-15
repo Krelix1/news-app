@@ -3,12 +3,14 @@ import css from './index.css';
 import Header from "./components/Header/Header";
 import NewsList from "./components/News/NewsList";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faGithub,faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import Search from "./components/Search/Search";
 
 const App = () => {
     return <div className={css.appWrapper}>
         <Header/>
+        <Search/>
         <main className={css.main}>
             <NewsList/>
         </main>
@@ -20,6 +22,9 @@ const App = () => {
             </ul>
         </footer>
     </div>
+
+
 };
+
 
 export default App;

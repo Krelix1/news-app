@@ -8,5 +8,8 @@ const instance= axios.create({
 export const NewsAPI={
     getTopHeadlins(){
         return instance.get(`top-headlines?country=us&apiKey=${apiKey}`)
+    },
+    getSearchingNews(body){
+        return instance.get(`everything?q=${body}&apiKey=${apiKey}`)
     }
 };

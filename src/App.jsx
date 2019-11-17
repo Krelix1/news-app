@@ -15,7 +15,6 @@ const App = () => {
             localStorage.setItem('date', JSON.stringify(today));
         } else {
             const date = JSON.parse(localStorage.getItem('date'));
-            console.log('date ', date, ' today ', today)
             if (today !== date) {
                 localStorage.setItem('visitors', '1');
                 localStorage.setItem('date', JSON.stringify(today));

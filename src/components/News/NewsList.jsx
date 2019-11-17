@@ -29,7 +29,6 @@ const NewsList = ({news, ...props}) => {
             className={css.list}>
             {news.map((article, index) => <Article key={index} article={article}/>)}
         </Masonry>
-
 };
 
 const mapStateToProps = state => ({

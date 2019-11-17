@@ -1,6 +1,6 @@
 import React from 'react';
 import css from './Header.css'
-const Header = (props) => {
+const Header = () => {
     const date = new Date();
     const today=`${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()}`;
     return <header className={css.header}>

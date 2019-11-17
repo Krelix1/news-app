@@ -12,7 +12,7 @@
   width: 80px;
   border: none;
   height: 30px;
-
+  border-radius: 0 5px 5px 0;
 }
 .btn:active{
   background-color: #444;
@@ -22,6 +22,22 @@
 .searchPanel input{
   text-align: center;
   padding: 0 10px;
+  width: 50px;
   height: 30px;
   border: 2px solid #222222;
+  transition: width 0.3s ease-in-out;
+}
+.searchPanel input:focus{
+  width: 200px;
+}
+
+@media (max-width: 650px) {
+  .btn{
+    width: 50px;
+    font-size: 12px;
+  }
+  .searchPanel{
+    height: 30px;
+    margin: 5px 0 ;
+  }
 }

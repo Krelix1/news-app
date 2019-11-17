@@ -5,8 +5,7 @@ import {faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import TopListContainer from "./components/News/TopListContainer";
-import SearchListContainer from "./components/News/SearchListContainer";
+import NewsList from "./components/News/NewsList";
 import css from './index.css';
 
 const App = () => {
@@ -41,11 +40,21 @@ const App = () => {
             <Nav/>
             <main className={css.main}>
                 <Switch>
-                    <Route exact path={'/'} render={() =>
-                        <TopListContainer/>
+                    <Redirect exact from={'/'} to={'/top'}/>
+                    <Route exact path={'/top'} render={(props) =>
+                        <NewsList type={'topHeadlines'} {...props}/>
+                    }/>
+                    <Route exact path={'/bbc-news'} render={(props) =>
+                        <NewsList type={'bbc'} {...props}/>
+                    }/>
+                    <Route exact path={'/cbc-news'} render={(props) =>
+                        <NewsList type={'cbc-news'} {...props}/>
+                    }/>
+                    <Route exact path={'/abc-news'} render={(props) =>
+                        <NewsList type={'abc-news'} {...props}/>
                     }/>
                     <Route path={'/search'} render={() =>
-                        <SearchListContainer/>
+                        <NewsList type={'search'}/>
                     }/>
                 </Switch>
             </main>

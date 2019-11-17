@@ -8,10 +8,10 @@ const Search = (props) => {
     let history = useHistory();
     const [body, setBody] = useState('');
     const search = () => {
-        if(body){
-        props.setSearchBody(body);
-        setBody('');
-        history.push('/search');
+        if (body) {
+            props.setSearchBody(body);
+            setBody('');
+            history.push('/search');
         }
     };
     const pressEnter = (event) => {
@@ -22,7 +22,8 @@ const Search = (props) => {
         }
     };
     return <div className={css.searchPanel}>
-        <input type="text" onKeyPress={pressEnter} value={body} onChange={(e) => setBody(e.target.value)} placeholder={'...'}/>
+        <input type="text" onKeyPress={pressEnter} value={body} onChange={(e) => setBody(e.target.value)}
+               placeholder={'...'}/>
         <button className={css.btn} onClick={search}>Search</button>
     </div>
 };

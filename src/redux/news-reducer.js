@@ -2,10 +2,12 @@ import {NewsAPI} from "../API/newsAPI";
 
 const SET_NEWS = "SET_NEWS";
 const SET_SEARCH_BODY = "SET_SEARCH_BODY";
+const TOGGLE_LOAD = "TOGGLE_LOAD";
 
 const initialState = {
     news: [],
-    searchBody:''
+    searchBody: '',
+    isLoad: false
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -14,18 +16,26 @@ const newsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 news: [...action.news],
-                countNews: action.news.length
+                countNews: action.news.length,
+                isLoad: false
             };
         case SET_SEARCH_BODY:
             return {
                 ...state,
-                searchBody: action.body
+                searchBody: action.body,
+            };
+        case TOGGLE_LOAD:
+            return {
+                ...state,
+                isLoad: action.isLoad
             };
         default:
             return state;
     }
 };
-
+const toggleLoad = (isLoad) => (
+    {type: TOGGLE_LOAD, isLoad}
+);
 const setNewsCreator = (news) => (
     {type: SET_NEWS, news}
 );
@@ -34,6 +44,7 @@ export const setSearchBody = (body) => (
 );
 
 export const setNews = (type, body) => async (dispatch) => {
+    dispatch(toggleLoad(true));
     let response;
     switch (type) {
         case 'topHeadlines':
@@ -46,10 +57,11 @@ export const setNews = (type, body) => async (dispatch) => {
             break;
         }
         default: {
-            response = await NewsAPI.getTopHeadlins();
+            response = await NewsAPI.getSearchSource(body);
             dispatch(setNewsCreator(response.data.articles));
             break;
         }
+
 
     }
 };

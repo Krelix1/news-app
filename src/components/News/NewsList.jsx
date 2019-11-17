@@ -6,33 +6,37 @@ import Masonry from "react-masonry-component";
 import css from './NewsList.css';
 import {useHistory} from "react-router-dom";
 
-const SearchListContainer = ({news, searchNews, ...props}) => {
+const NewsList = ({news, ...props}) => {
+    const url=props.match.url.slice(1);
     const masonryOptions = {
         transitionDuration: 0,
         isFitWidth: true
     };
     let history = useHistory();
-    if (props.searchBody === '') {
-        history.push('/')
-    } else {
-        useEffect(() => {
-            props.setNews('search', props.searchBody)
-        }, [props.searchBody]);
-    }
-    return news.length !== 0
-        ? <Masonry
+    useEffect(() => {
+        if (props.type === 'search' && props.searchBody === '') {
+            history.push('/')
+        } else if (props.type === 'search') {
+            props.setNews(props.type, props.searchBody)
+        } else {
+            props.setNews(props.type,url)
+        }
+    }, [props.type, props.searchBody]);
+    return props.isLoad ? <p className={css.preloader}>News App...</p> : news.length !== 0
+        && <Masonry
             options={masonryOptions}
             elementType={'ul'}
             className={css.list}>
             {news.map((article, index) => <Article key={index} article={article}/>)}
         </Masonry>
-        : <p className={css.preloader}>News App...</p>
+
 };
 
 const mapStateToProps = state => ({
         news: state.news.news,
-        searchBody: state.news.searchBody
+        searchBody: state.news.searchBody,
+        isLoad: state.news.isLoad
     }
 );
 
-export default connect(mapStateToProps, {setNews})(SearchListContainer);
+export default connect(mapStateToProps, {setNews})(NewsList);

@@ -11,5 +11,8 @@ export const NewsAPI={
     },
     getSearchingNews(body){
         return instance.get(`everything?q=${body}&apiKey=${apiKey}`)
+    },
+    getSearchSource(source){
+        return instance.get(`/top-headlines?sources=${source}&apiKey=${apiKey}`)
     }
 };

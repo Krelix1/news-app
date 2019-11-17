@@ -1,11 +1,11 @@
 import {NewsAPI} from "../API/newsAPI";
 
 const SET_NEWS = "SET_NEWS";
-const SET_SEARCHING_NEWS = "SET_SEARCHING_NEWS";
+const SET_SEARCH_BODY = "SET_SEARCH_BODY";
 
 const initialState = {
     news: [],
-    searchNews:[]
+    searchBody:''
 };
 
 const newsReducer = (state = initialState, action) => {
@@ -16,10 +16,10 @@ const newsReducer = (state = initialState, action) => {
                 news: [...action.news],
                 countNews: action.news.length
             };
-        case SET_SEARCHING_NEWS:
+        case SET_SEARCH_BODY:
             return {
                 ...state,
-                searchNews: [...action.searchNews]
+                searchBody: action.body
             };
         default:
             return state;
@@ -29,15 +29,28 @@ const newsReducer = (state = initialState, action) => {
 const setNewsCreator = (news) => (
     {type: SET_NEWS, news}
 );
-const setSearchingNews = (searchNews)=>(
-    {type: SET_SEARCHING_NEWS,searchNews}
-    );
-export const setNews = () => async (dispatch) => {
-   let response = await NewsAPI.getTopHeadlins();
-   dispatch(setNewsCreator(response.data.articles));
-};
-export const searchNews=(body)=> async (dispatch)=>{
-  let response = await NewsAPI.getSearchingNews(body);
-  dispatch(setSearchingNews(response.data.articles))
+export const setSearchBody = (body) => (
+    {type: SET_SEARCH_BODY, body}
+);
+
+export const setNews = (type, body) => async (dispatch) => {
+    let response;
+    switch (type) {
+        case 'topHeadlines':
+            response = await NewsAPI.getTopHeadlins();
+            dispatch(setNewsCreator(response.data.articles));
+            break;
+        case 'search': {
+            response = await NewsAPI.getSearchingNews(body);
+            dispatch(setNewsCreator(response.data.articles));
+            break;
+        }
+        default: {
+            response = await NewsAPI.getTopHeadlins();
+            dispatch(setNewsCreator(response.data.articles));
+            break;
+        }
+
+    }
 };
 export default newsReducer;

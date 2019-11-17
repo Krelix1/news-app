@@ -6,5 +6,11 @@
   padding-right: 4px;
 }
 .preloader{
+  text-align: center;
   font-size: 100px;
+}
+@media (max-width: 1050px){
+  .preloader{
+    font-size: 80px;
+  }
 }

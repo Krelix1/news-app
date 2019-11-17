@@ -6,7 +6,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index_bundle.js',
-        publicPath: './'
+        publicPath: '/'
     },
     module: {
         rules: [
@@ -30,7 +30,8 @@ module.exports = {
     mode: 'development',
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: 'src/index.html',
+            inject: "body"
         })
     ]
 

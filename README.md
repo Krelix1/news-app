@@ -12,7 +12,7 @@ Runs ESLint checking to all .js and .jsx files.
 
 Build project.
 
-#About app
+# About app
 
 `react`
 Used as a main library to create my SPA.
@@ -32,6 +32,6 @@ Used for async actions
 `css-modules`
 Used for styling components
 
-###[News API](https://newsapi.org/)
+### [News API](https://newsapi.org/)
 
 Used for getting movies

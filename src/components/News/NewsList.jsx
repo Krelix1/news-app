@@ -7,7 +7,7 @@ import css from './NewsList.css';
 import {useHistory} from "react-router-dom";
 
 const NewsList = ({news, ...props}) => {
-    const url=props.match.url.slice(1);
+    const url=props.match && props.match.url.slice(1);
     const masonryOptions = {
         transitionDuration: 0,
         isFitWidth: true
